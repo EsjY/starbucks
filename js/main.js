@@ -1,33 +1,31 @@
-const badgeEl = document.querySelector('header .badges');
+const badgesEl = document.querySelector('header .badges');
 const toTopEl = document.querySelector('#to-top');
 
 window.addEventListener('scroll', _.throttle(function () {
   console.log(window.scrollY);
-  if(window.scrollY > 500) {
-    //배지 숨기기
-    // gsap.to(요소, 지속시간, 옵션);
-    gsap.to(badgeEl, .6, {
-      opacity: 0,
-      display: 'none'
-    });
-    // 버튼 보이기
-    gsap.to(toTopEl, .2, {
-      x: 0
-    });
+  if (window.scrollY> 500) {
+    // 배지 숨기기
+   gsap.to(badgesEl, .6, {
+     opacity: 0,
+     display: 'none'
+   });
+   //버튼보이기
+   gsap.to(toTopEl, .2, {
+    x: 0
+  });
   } else {
     //배지 보이기
-    gsap.to(badgeEl, .6, {
-      opacity: 1,
-      display: 'block'
-    });
-    //버튼 숨기기
-    gsap.to(toTopEl, .2, {
-      x: 100
-    });
-  }
+  gsap.to(badgesEl, .6, {
+    opacity: 1,
+    display: 'block' 
+  });
+  //버튼숨기기
+  gsap.to(toTopEl, .2, {
+    x: 100
+  });
+}
+}, 300));
 
-}, 300))
-// _.throttle(함수, 시간)
 
 
 toTopEl.addEventListener('click', function () {
@@ -105,7 +103,8 @@ function random(min, max) {
 }
 
 function floatingObject(selector, delay, size) {
-  gsap.to(selector, random(1.5, 2.5), {
+  gsap.to(selector, 
+    random(1.5, 2.5), {
     y: size,
     repeat: -1,
     yoyo: true,
